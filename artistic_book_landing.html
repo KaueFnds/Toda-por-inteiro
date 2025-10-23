@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tainah Cerqueira - Um Livro que Toca a Alma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #102542;
+            overflow-x: hidden;
+            background: #3AA7E0;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #3AA7E0 0%, #F6B93B 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 80px 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(233, 79, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(246, 185, 59, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text {
+            animation: fadeInLeft 1s ease-out;
+        }
+
+        .hero-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            text-shadow: 3px 3px 8px rgba(16, 37, 66, 0.3);
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: #FFFFFF;
+            margin-bottom: 35px;
+            font-weight: 600;
+            text-shadow: 2px 2px 4px rgba(16, 37, 66, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #E94F37;
+            color: #FFFFFF;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(233, 79, 55, 0.4);
+            transition: all 0.3s ease;
+            border: 3px solid #FFFFFF;
+        }
+
+        .cta-button:hover {
+            background: #F6B93B;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(246, 185, 59, 0.5);
+        }
+
+        .book-cover {
+            position: relative;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .book-image {
+            width: 100%;
+            max-width: 400px;
+            height: 550px;
+            background: linear-gradient(135deg, #102542 0%, #3AA7E0 100%);
+            border-radius: 15px;
+            box-shadow: 
+                0 20px 60px rgba(16, 37, 66, 0.4),
+                0 0 0 8px rgba(246, 185, 59, 0.3),
+                0 0 0 16px rgba(233, 79, 55, 0.2);
+            position: relative;
+            overflow: hidden;
+            transform: rotate(-2deg);
+            transition: transform 0.5s ease;
+        }
+
+        .book-image:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .book-image::after {
+            content: 'Capa do Livro';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #FFFFFF;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .section {
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .section-about {
+            background: #FFFFFF;
+            position: relative;
+        }
+
+        .section-about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(58, 167, 224, 0.1), transparent);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            color: #102542;
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: linear-gradient(90deg, #E94F37, #F6B93B);
+            border-radius: 3px;
+        }
+
+        .book-description {
+            font-size: 1.3rem;
+            line-height: 2;
+            text-align: center;
+            color: #102542;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            background: rgba(58, 167, 224, 0.05);
+            border-radius: 20px;
+            border-left: 5px solid #E94F37;
+        }
+
+        .author-section {
+            background: linear-gradient(135deg, #3AA7E0 0%, #102542 100%);
+            color: #FFFFFF;
+        }
+
+        .author-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .author-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #F6B93B, #E94F37);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.3),
+                0 0 0 10px rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .author-bio h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 25px;
+        }
+
+        .author-bio p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .testimonials {
+            background: #FFFFFF;
+            padding: 100px 20px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: #FFFFFF;
+            padding: 35px;
+            border-radius: 20px;
+            border: 4px solid;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:nth-child(1) {
+            border-color: #E94F37;
+        }
+
+        .testimonial-card:nth-child(2) {
+            border-color: #F6B93B;
+        }
+
+        .testimonial-card:nth-child(3) {
+            border-color: #3AA7E0;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            font-family: 'Montserrat', sans-serif;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            color: currentColor;
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #102542;
+        }
+
+        .final-cta {
+            background: linear-gradient(135deg, #E94F37 0%, #F6B93B 100%);
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 30% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(16, 37, 66, 0.1) 0%, transparent 50%);
+        }
+
+        .final-cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .final-cta h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3.5rem;
+            color: #FFFFFF;
+            margin-bottom: 30px;
+            text-shadow: 3px 3px 10px rgba(16, 37, 66, 0.3);
+        }
+
+        .final-cta p {
+            font-size: 1.4rem;
+            color: #FFFFFF;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 5px rgba(16, 37, 66, 0.2);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: #102542;
+            color: #FFFFFF;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(16, 37, 66, 0.5);
+            transition: all 0.3s ease;
+            border: 3px solid #FFFFFF;
+        }
+
+        .cta-primary:hover {
+            background: #FFFFFF;
+            color: #E94F37;
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #FFFFFF;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            border: 3px solid #FFFFFF;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: #FFFFFF;
+            color: #102542;
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .book-image {
+                margin: 0 auto;
+            }
+
+            .author-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .author-photo {
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .final-cta h2 {
+                font-size: 2.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Palavras que Pintam Sentimentos</h1>
+                <p class="subtitle">Uma jornada emocional através das páginas</p>
+                <a href="#comprar" class="cta-button">Adquira o seu</a>
+            </div>
+            <div class="book-cover">
+                <div class="book-image">
+                    <img src="capaLivro.jpeg" alt="capa do livro Toda por inteiro" class="book-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-about">
+        <div class="container">
+            <h2 class="section-title">Sobre o Livro</h2>
+            <div class="book-description">
+                <p>Um mergulho profundo nas águas da emoção humana, onde cada palavra é um pincelada de cor e cada página revela um novo matiz da alma. Este livro é um convite para sentir, para se perder e se encontrar entre versos que dançam como traços de aquarela no papel.</p>
+                <br>
+                <p><em>"Porque algumas histórias não se leem, se vivem. E esta é uma delas."</em></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section author-section">
+        <div class="container">
+            <div class="author-content">
+                <div class="author-photo">
+                    <img src="autora.jpeg" alt="" class="author-photo">
+                    
+                </div>
+                <div class="author-bio">
+                    <h3>Sobre a Autora</h3>
+                    <p>Tainah Cerqueira é uma artista da palavra que transforma emoções em arte. Com uma sensibilidade única e uma voz autêntica, ela tece histórias que tocam o coração e despertam a alma. Sua escrita é um reflexo de sua jornada pessoal, uma celebração da vulnerabilidade e da força que existe em cada um de nós.</p>
+                    <br>
+                    <p>Através de suas páginas, Tainah convida você a explorar os cantos mais profundos da experiência humana, sempre com coragem, honestidade e uma pitada de magia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">O que os Leitores Dizem</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Este livro me pegou desprevenida. Chorei, sorri e me reconheci em cada capítulo. É uma obra que fica com você muito depois da última página.</p>
+                    <p class="testimonial-author">— Ana Beatriz</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Tainah tem o dom de transformar sentimentos complexos em palavras simples e profundas. Uma leitura essencial para quem busca conexão genuína.</p>
+                    <p class="testimonial-author">— Rafael Costa</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Nunca tinha lido algo tão visceral e ao mesmo tempo tão delicado. É como se a autora tivesse mergulhado na minha alma e traduzido tudo em arte.</p>
+                    <p class="testimonial-author">— Mariana Silva</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta" id="comprar">
+        <div class="final-cta-content">
+            <h2>Pronto para Sentir?</h2>
+            <p>Deixe-se levar por esta experiência única. Cada página é um presente para a sua alma.</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-primary">Compre Agora</a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
